@@ -100,8 +100,8 @@
 	}
 </script>
 
-<main class="container">
-	<div class="background">
+<main class="background">
+	<div class="container">
 		<h1>
 			Block Hand key generator
 		</h1>
@@ -128,6 +128,7 @@
 		<div class="password-input">
 			{#if isPasswordVisible}
 				<input
+				    class="input-field"
 					bind:value={passwordString}
 					type="text"
 					placeholder="Input password of at least 8 characters"
@@ -135,6 +136,7 @@
 				/>
 			{:else}
 				<input
+				    class="input-field"
 					bind:value={passwordString}
 					type="password"
 					placeholder="Input password of at least 8 characters"
@@ -151,7 +153,7 @@
 		{/if}
 
 		{#if privateKey}
-			<p>Private Key: {privateKey}</p>
+			<p class="key">Private Key: {privateKey}</p>
 			<button on:click={() => copyToClipboard(privateKey)}>Copy to Clipboard</button>
 		{/if}
 		{#if error}
@@ -163,7 +165,7 @@
 		>
 
 		{#if bitcoinPrivateKey}
-			<p>Bitcoin Private Key: {bitcoinPrivateKey}</p>
+			<p class="key">Bitcoin Private Key: {bitcoinPrivateKey}</p>
 			<button on:click={() => copyToClipboard(bitcoinPrivateKey)}>Copy to Clipboard</button>
 		{/if}
 	</div>
@@ -185,19 +187,18 @@
 		align-items: center; /* 子要素を垂直方向で中央に配置します */
 		margin: 0 auto; /* ウィンドウ全体を中央に配置します */
 		font-family: 'Courier New', monospace;
-		color: var(--accent-color);
-		background-color: var(--background-color);
 		background-image: linear-gradient(to right, var(--primary-color), #ffffff);
+		width: 100%;
+		/* 高さを常に画面いっぱいにする */
+		height: 100vh;
+
 	}
 
 	.background {
-		padding: 2rem;
-		width: 80%;
-		height: 60%;
+
 		background-image: linear-gradient(
 			to right,
-			#ffffff,
-			var(--secondary-color)
+
 		); /* グラデーション適用 */
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 		border-radius: 10px;
@@ -205,7 +206,6 @@
 		flex-direction: column; /* 子要素を縦方向に配置します */
 		justify-content: center; /* 子要素を水平方向で中央に配置します */
 		align-items: center; /* 子要素を垂直方向で中央に配置します */
-		overflow: auto; /* 必要に応じてスクロールバーを表示 */
 	}
      h1 {
 		font-size: 1.5rem;
@@ -227,9 +227,9 @@
 	}
 
 	input:focus {
-		outline: none;
-		border-color: #aca99b;
-	}
+    border-color: #aca99b; /* フォーカス時のボーダー色を変更 */
+    box-shadow: 0 0 3px #aca99b; /* フォーカス時のシャドウを追加 */
+}
 
 
 	.warning,
@@ -238,10 +238,25 @@
 		margin-top: 1rem;
 	}
 
+	button {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+	 margin-bottom: 20px;
+}
+
+
 	button:disabled {
-		background-color: #ccc;
-		cursor: not-allowed;
-	}
+    background-color: #838383;
+    cursor: not-allowed;
+}
+
+	button:hover {
+    background-color: darken(var(--primary-color), 10%); /* ホバー時の背景色を暗く */
+}
 
    .password-input{
    width: 90%;
@@ -249,5 +264,12 @@
    justify-content: center;
    align-items: center;
    margin-bottom: 1.5rem;
+
    }
+   .input-field{
+	background-color:#e0ddd8}
+
+	.key{
+		color: var(--accent-color);
+	}
 </style>
