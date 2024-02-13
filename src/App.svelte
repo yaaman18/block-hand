@@ -105,7 +105,13 @@
 		<h1>
 			Block Hand key generator
 		</h1>
+		<h2>
+			Please enter a password using characters other than
+			+, /, 0 (zero), O (uppercase 'o'), I (uppercase 'i'),
+			and l (lowercase 'L')
+		</h2>
 		<div class="password-input">
+
 			{#if isPasswordVisible}
 				<input
 					class="input-field"
@@ -177,7 +183,7 @@
 		--secondary-color: #d8d4ce;
 		--background-color: #e8e8e9;
 		--base-color: #c0bcaf;
-		--accent-color: #8e8c81;
+		--accent-color: #4f4f47;
 	}
 
 	.container {
@@ -210,6 +216,14 @@
      h1 {
 		font-size: 1.5rem;
 		margin-bottom: 3rem;
+	 }
+	 h2{
+		font-size: 1rem;
+		margin-bottom: 3rem;
+		margin-left: 10rem;
+		margin-right: 10rem;
+       color: var(--accent-color);
+	   text-align: left;
 	 }
 	input {
 		width: 80%;
