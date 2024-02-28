@@ -83,16 +83,16 @@
 			bs58.decode(passwordString);
 			warning = '';
 		} catch (e) {
-			warning = 'Base58の文字を入力してください';
+			warning = 'Please enter the Base58 characters';
 			isBase58Valid = false;
 		}
 
 		// Provided codeとPasswordの長さ検証
 		if (providedCode.length < 16) {
-			warning += ' Provided codeは16文字以上である必要があります';
+			warning += 'The provided code must be at least 16 characters long';
 			isButtonDisabled = true;
 		} else if (passwordString.length < 8) {
-			warning += ' Passwordは8文字以上である必要があります';
+			warning += 'The password must be at least 8 characters long';
 			isButtonDisabled = true;
 		} else if (isBase58Valid) {
 			isButtonDisabled = false; // すべての条件を満たす場合、ボタンを活性化
