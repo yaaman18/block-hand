@@ -15,23 +15,23 @@
 
 	function providedCodeInput() {
 		if (providedCode.length < 16) {
-			warning += ' Provided codeは16文字以上である必要があります';
+			warning += 'The provided code must be at least 16 characters long';
 		}
 	}
 
 	function passwordStringInput() {
 		if (passwordString.length < 8) {
-			warning += ' Passwordは8文字以上である必要があります';
+			warning += 'The password must be at least 8 characters long';
 		}
 	}
 
 	function copyToClipboard(text: string) {
 		navigator.clipboard.writeText(text).then(
 			() => {
-				console.log('クリップボードにコピーしました');
+				console.log('copied to clipboard!');
 			},
 			(err) => {
-				console.error('クリップボードへのコピーに失敗しました:', err);
+				console.error('error copied to clipboard ', err);
 			}
 		);
 	}
